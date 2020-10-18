@@ -15,14 +15,19 @@ use App\Http\Middleware\CheckRole;
 |
 */
 
-Route::get('/', function () {
-    // return view('auth.login');
-    return view('welcome');
-    // return "home";
-});
-    Route::get('gagal', function() {
-        return "GAGAL LOGIN";
+    Route::get('/', function () {
+        // return view('auth.login');
+        return view('welcome');
+        // return "home";
     });
+
+    Route::get('author', function () {
+        return response()->json([
+            'name' => 'Adhimas Pns',
+            'github' => 'https://github.com/adhimaspns'
+        ]);
+    });
+    
 
     // Route::get('admin/login', 'AuthController@formlogin');
     // Route::post('admin/postlog', 'AuthController@postlog');
@@ -54,9 +59,9 @@ Route::get('/', function () {
         Route::get('showcase', 'Web\ShowcaseController@index');
     });
 
-    if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
-        # code...
-    }
+    // if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
+    //     # code...
+    // }
     // Route Group level admin
     Route::group(['middleware' => ['auth', 'checkRole:admin,superadmin'] ], function () {
         Route::get('/home', 'HomeController@index')->name('home');
