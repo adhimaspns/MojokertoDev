@@ -8,7 +8,7 @@
 
   @section('breadcrumb')
   <ol class="breadcrumb float-sm-right">
-    <li class="breadcrumb-item"><a href="{{ url('home') }}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('/home') }}">Beranda</a></li>
   </ol>
   @endsection
   <div class="row">
@@ -69,11 +69,10 @@
 
       <div class="col-lg-4 offset-lg-4 col-12">
         <!-- small box -->
-        <div class="small-box bg-light text-dark">
+        <div class="small-box bg-warning text-dark">
           <div class="inner">
             <h3>
-              0
-              {{-- {{ $user }} --}}
+              {{ $mentors }}
             </h3>
 
             <p> Mentor </p>
@@ -87,7 +86,7 @@
       <!-- ./col --> 
 
     @else
-    <div class="col-lg-6 col-6">
+    <div class="col-lg-6 col-12">
       <!-- small box -->
       <div class="small-box bg-secondary">
         <div class="inner">
@@ -105,7 +104,7 @@
     </div>
     <!-- ./col -->
 
-    <div class="col-lg-6 col-6">
+    <div class="col-lg-6 col-12">
       <!-- small box -->
       <div class="small-box bg-danger">
         <div class="inner">
@@ -121,6 +120,24 @@
         <a href={{ url('event') }} class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div> 
+
+    <div class="col-lg-8 offset-lg-2 col-12">
+      <!-- small box -->
+      <div class="small-box bg-warning text-dark">
+        <div class="inner">
+          <h3>
+            {{ $mentors }}
+          </h3>
+
+          <p> Mentor </p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-male"></i>
+        </div>
+        <a href="{{ url('mentor') }}" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
     @endif
     
   </div>

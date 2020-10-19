@@ -14,7 +14,7 @@ class CreateMentorTable extends Migration
     public function up()
     {
         Schema::create('mentor', function (Blueprint $table) {
-            $table->id('id_mentor');
+            $table->id('id');
             $table->string('nama');
             $table->string('email');
             $table->string('pekerjaan');

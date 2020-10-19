@@ -28,28 +28,14 @@ use App\Http\Middleware\CheckRole;
         ]);
     });
     
-
-    // Route::get('admin/login', 'AuthController@formlogin');
-    // Route::post('admin/postlog', 'AuthController@postlog');
-
-    // Route::get('superadmin/login', function () {
-    //     return view('auth.login');
-    // });
-
     // Route::get('/form/login', 'AuthController@formlogin')->name('formlogin')->middleware('guest');
     Route::get('/form/login', 'AuthController@formlogin')->name('formlogin');
     Route::post('/proses-login', 'AuthController@postlog');
     Route::post('/signout', 'AuthController@signout');
-
-    Route::get('404', function() {
-        return view('backend.404');
-    });
-
     
     // Route Group level superadmin
     Route::group(['middleware' => ['auth','checkRole:superadmin'] ], function () {
         Route::get('/home', 'HomeController@index')->name('home');
-        // Route::get('/dashboard', 'DashboardController@index');
         Route::get('admin', 'Web\AdminController@index');
         Route::get('admin/detail/{iduser}', 'Web\AdminController@detail');
         Route::get('admin/create', 'Web\AdminController@create');
@@ -57,17 +43,22 @@ use App\Http\Middleware\CheckRole;
         Route::delete('admin/{iduser}', 'Web\AdminController@destroy')->name('admin.destroy');
         Route::get('event', 'Web\EventController@index');
         Route::get('showcase', 'Web\ShowcaseController@index');
+        Route::get('mentor', 'Web\MentorController@index');
+        Route::get('mentor/detail/{id}', 'Web\MentorController@show');
+        Route::get('mentor/create', 'Web\MentorController@create');
     });
 
     // if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
     //     # code...
     // }
+
     // Route Group level admin
     Route::group(['middleware' => ['auth', 'checkRole:admin,superadmin'] ], function () {
         Route::get('/home', 'HomeController@index')->name('home');
-        // Route::get('/dashboard', 'DashboardController@index');
         Route::get('event', 'Web\EventController@index');
         Route::get('showcase', 'Web\ShowcaseController@index');
+        Route::get('mentor', 'Web\MentorController@index');
+        Route::get('mentor/detail/{id}', 'Web\MentorController@show');
     });
 
 

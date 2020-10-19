@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Models\Mentor;
 use App\Models\Show;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,10 +30,11 @@ class HomeController extends Controller
         $user  = User::where('role','admin')->count();
         $event = Event::all()->count();
         $show  = Show::all()->count();
+        $mentors = Mentor::all()->count();
 
 
 
 
-        return view('backend.dashboard', compact('user' , 'event' , 'show'));
+        return view('backend.dashboard', compact('user' , 'event' , 'show', 'mentors'));
     }
 }

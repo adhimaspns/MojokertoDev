@@ -5,25 +5,25 @@
 @section('title-header-content', 'Data Admin')
 
 @push('customcss')
-    <style>
-      .button-create {
-        margin: 20px 0;
-      }
-      .link-paginate {
-        margin: 10px;
-        float: right
-      }
-      .alert-data {
-        margin: 20px;
-      }
-    </style>
+  <style>
+    .button-create {
+      margin: 20px 0;
+    }
+    .link-paginate {
+      margin: 10px;
+      float: right
+    }
+    .alert-data {
+      margin: 20px;
+    }
+  </style>
 @endpush
 
 @section('main-content')
 
   @section('breadcrumb')
     <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item"><a href="{{ url('homeauth.login') }}">Beranda</a></li>
+      <li class="breadcrumb-item"><a href="{{ url('/home') }}">Beranda</a></li>
       <li class="breadcrumb-item active">Data Admin</li>
     </ol>
   @endsection
@@ -45,6 +45,7 @@
             <a href="{{ url('admin') }}"> Oke</a>
           </div>  
           @endif
+          
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -110,7 +111,7 @@
                         <form action="{{ route('admin.destroy', $admin->id) }}" method="post" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger"> 
+                          <button type="submit" class="btn btn-sm btn-danger"> 
                             <i class="fas fa-trash"></i>
                           </button>
                         </form>

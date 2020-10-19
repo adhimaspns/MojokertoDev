@@ -91,6 +91,7 @@
           
         </li>
       </ul>
+
     </nav>
   <!-- /.navbar -->
 
@@ -111,12 +112,39 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
                   with font-awesome or any other icon font library -->
+
+              @if (auth()->user()->role == 'admin')
               <li class="nav-item " style="margin: 3px;">
                 <a href="{{ url('/home') }}" class="nav-link bg-primary">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p style="margin-left: 10px;">Beranda</p>
                 </a>
               </li>
+              <li class="nav-item" style="margin: 3px;">
+                <a href="{{ url('event') }}" class="nav-link bg-danger text-white">
+                  <i class="fas fa-calendar-alt"></i>
+                  <p style="margin-left: 10px;">Event</p>
+                </a>
+              </li>
+              <li class="nav-item" style="margin: 3px;">
+                <a href="{{ url('showcase') }}" class="nav-link bg-secondary">
+                  <i class="fas fa-store"></i>
+                  <p style="margin-left: 10px;">Show Case</p>
+                </a>
+              </li>
+              <li class="nav-item" style="margin: 3px;">
+                <a href="{{ url('mentor') }}" class="nav-link bg-warning">
+                  <i class="nav-icon fas fa-male"></i>
+                  <p>Mentor</p>
+                </a>
+              </li>
+
+
+              @endif
+
+              
+
+             
 
               {{-- <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -148,20 +176,29 @@
                 </ul>
               </li> --}}
 
-              <li class="nav-item" style="margin: 3px;">
-                <a href="{{ url('event') }}" class="nav-link bg-danger text-white">
-                  <i class="fas fa-calendar-alt"></i>
-                  <p style="margin-left: 10px;">Event</p>
-                </a>
-              </li>
-              <li class="nav-item" style="margin: 3px;">
-                <a href="{{ url('showcase') }}" class="nav-link bg-secondary">
-                  <i class="fas fa-store"></i>
-                  <p style="margin-left: 10px;">Show Case</p>
-                </a>
-              </li>
+              
+              
+              
 
               @if(auth()->user()->role == 'superadmin')
+                <li class="nav-item " style="margin: 3px;">
+                  <a href="{{ url('/home') }}" class="nav-link bg-primary">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p style="margin-left: 10px;">Beranda</p>
+                  </a>
+                </li>
+                <li class="nav-item" style="margin: 3px;">
+                  <a href="{{ url('event') }}" class="nav-link bg-danger text-white">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p style="margin-left: 10px;">Event</p>
+                  </a>
+                </li>
+                <li class="nav-item" style="margin: 3px;">
+                  <a href="{{ url('showcase') }}" class="nav-link bg-secondary">
+                    <i class="fas fa-store"></i>
+                    <p style="margin-left: 10px;">Show Case</p>
+                  </a>
+                </li>
                 <li class="nav-item" style="margin: 3px;">
                   <a href="{{ url('admin') }}" class="nav-link bg-success text-white">
                     <i class="nav-icon fas fa-users-cog"></i>
@@ -169,7 +206,7 @@
                   </a>
                 </li>
                 <li class="nav-item" style="margin: 3px;">
-                  <a href="{{ url('admin') }}" class="nav-link bg-light text-dark">
+                  <a href="{{ url('mentor') }}" class="nav-link bg-warning">
                     <i class="nav-icon fas fa-male"></i>
                     <p>Mentor</p>
                   </a>
