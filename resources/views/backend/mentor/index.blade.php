@@ -21,6 +21,18 @@
             <i class="fas fa-plus"></i> Mentor
           </a>  
         @endif
+        @if (session('hapus'))
+          <div class="alert alert-success alert-data">
+            {{ session('hapus')}} |
+            <a href="{{ url('mentor') }}"> Oke</a>
+          </div>  
+        @endif
+        @if (session('update'))
+        <div class="alert alert-success alert-data">
+          {{ session('update')}} |
+          <a href="{{ url('mentor') }}"> Oke</a>
+        </div>  
+      @endif
         
         <div class="card">
           <div class="card-header">
@@ -31,7 +43,7 @@
 
             <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Cari">
 
                 <div class="input-group-append">
                   <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -58,12 +70,16 @@
                     <td> {{ $mtr->nama}} </td>
                     <td>
                       @if (auth()->user()->role == 'superadmin')
-                        <a href="#" class="btn btn-sm btn-warning"> 
+                        <a href="{{ route('mentor.edit', $mtr->id) }}" class="btn btn-sm btn-warning"> 
                           <i class="fas fa-edit"></i>
                         </a> 
-                        <a href="#" class="btn btn-sm btn-danger"> 
-                          <i class="fas fa-trash"></i>
-                        </a>
+                        <form action="{{ route('mentor.destroy', $mtr->id) }}" method="post" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-sm btn-danger"> 
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </form>
                       @endif
                       <a href="{{ url('mentor/detail', $mtr->id) }}" class="btn btn-sm btn-info"> 
                         <i class="fas fa-eye"></i>

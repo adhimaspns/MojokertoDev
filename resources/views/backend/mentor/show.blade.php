@@ -65,8 +65,8 @@
                   <td> {{ $mentor->pekerjaan}}    </td>
                   <td>
                     {{-- Show Image form directory & DB --}}
-                    {{-- <img src="{{ URL::asset('image/' . $admin->foto) }}" class="card-img-top img-user" alt="Image-admin"> --}}
-                    <img src="{{ $mentor->foto }}" class="card-img-top img-user" alt="Image-admin">
+                    <img src="{{ URL::asset($mentor->foto) }}" class="card-img-top img-user" alt="Image-admin">
+                    {{-- <img src="{{ url('') $mentor->foto }}" class="card-img-top img-user" alt="Image-admin"> --}}
                   </td>
                 </tr>
               </tbody>

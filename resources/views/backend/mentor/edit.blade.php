@@ -2,7 +2,19 @@
 
 @section('title', 'MojokertoDev')
 
-@section('title-header-content', 'Tambah Mentor')
+@section('title-header-content', 'Edit Mentor')
+
+@push('customcss')
+  <style>
+    .img-mentor {
+        width: 200px;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 20px 0 ;
+      }
+  </style>
+@endpush
 
 {{-- Konten --}}
 @section('main-content')
@@ -13,7 +25,7 @@
     <li class="breadcrumb-item">
       <a href="{{ url('mentor') }}">Data Mentor</a>
     </li>
-    <li class="breadcrumb-item active">Tambah Mentor</li>
+    <li class="breadcrumb-item active">Edit Mentor</li>
   </ol>
   @endsection
 
@@ -36,40 +48,45 @@
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title"> 
-              <i class="fas fa-plus"></i>
-              Tambah Mentor
+              <i class="fas fa-edit"></i>
+              Edit Mentor
             </h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="post" action="{{ url('mentor') }}" enctype="multipart/form-data">
+          <form method="post" action="{{ route('mentor.update', $mentor->id ) }}" enctype="multipart/form-data">
             @csrf
+            @method('patch')
             <div class="card-body">
               <div class="form-group">
                 <label> Nama </label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" placeholder="Adhimas" value="{{ old('nama') }}">
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" placeholder="Adhimas" value="{{ $mentor->nama}}">
                 @error('nama')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label> E-mail </label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="ex.gmail.com" value="{{ old('email') }}">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="ex.gmail.com" value="{{ $mentor->email}}">
                 @error('email')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label> Pekerjaan </label>
-                <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" placeholder="Web Developer" value="{{ old('address') }}">
+                <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" placeholder="Web Developer" value="{{ $mentor->pekerjaan}}">
                 @error('pekerjaan')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label> Foto </label>
-                <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" value="{{ old('foto') }}">
-                @error('foto')
+                <img src="{{ $mentor->foto }}" alt="image-mentor" class="img-thumbnail img-mentor">
+                <input type="file" class="form-control @error('file') is-invalid @enderror" name="file">
+                {{-- <label class="text-muted">
+                  {{ $mentor->foto}}
+                </label> --}}
+                @error('file')
                   <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>
@@ -77,7 +94,7 @@
             <!-- /.card-body -->
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </form>
         </div>

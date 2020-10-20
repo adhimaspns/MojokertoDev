@@ -35,17 +35,26 @@ use App\Http\Middleware\CheckRole;
     
     // Route Group level superadmin
     Route::group(['middleware' => ['auth','checkRole:superadmin'] ], function () {
+
         Route::get('/home', 'HomeController@index')->name('home');
+
+        Route::get('event', 'Web\EventController@index');
+        Route::get('showcase', 'Web\ShowcaseController@index');
+
         Route::get('admin', 'Web\AdminController@index');
         Route::get('admin/detail/{iduser}', 'Web\AdminController@detail');
         Route::get('admin/create', 'Web\AdminController@create');
         Route::post('admin', 'Web\AdminController@store');
         Route::delete('admin/{iduser}', 'Web\AdminController@destroy')->name('admin.destroy');
-        Route::get('event', 'Web\EventController@index');
-        Route::get('showcase', 'Web\ShowcaseController@index');
+        
+
         Route::get('mentor', 'Web\MentorController@index');
         Route::get('mentor/detail/{id}', 'Web\MentorController@show');
         Route::get('mentor/create', 'Web\MentorController@create');
+        Route::post('mentor', 'Web\MentorController@store');
+        Route::delete('mentor/{id}', 'Web\MentorController@destroy')->name('mentor.destroy');
+        Route::get('mentor/{id}/edit', 'Web\MentorController@edit')->name('mentor.edit');
+        Route::patch('mentor/{id}', 'Web\MentorController@update')->name('mentor.update');
     });
 
     // if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
