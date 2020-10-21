@@ -92,7 +92,7 @@
                   
                     @foreach ($admins as $index => $admin)
                     <tr>
-                      <td> {{ $loop->iteration }} </td>
+                      <td> {{ $admins->firstItem() + $index }} </td>
                       <td> {{ $admin->name }}</td>
                       <td> {{ $admin->username }}</td>
                       <td> {{ $admin->email }}</td>

@@ -77,7 +77,7 @@
                 
                   @foreach ($mentor as $mtr)
                   <tr>
-                    <td> {{ $loop->iteration }} </td>
+                    <td> {{ $mentor->firstItem() + $mtr }} </td>
                     <td> {{ $mtr->nama}} </td>
                     <td> {{ $mtr->pekerjaan}} </td>
                     <td>
