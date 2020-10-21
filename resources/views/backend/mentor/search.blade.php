@@ -2,7 +2,7 @@
 
 @section('title', 'MojokertoDev')
 
-@section('title-header-content', 'Data Mentor')
+@section('title-header-content', 'Hasil Cari Data Mentor')
 
 @section('main-content')
 
@@ -60,6 +60,7 @@
                 <tr>
                   <th> No </th>
                   <th> Nama </th>
+                  <th> Pekerjaan </th>
                   <th> Aksi </th>
                 </tr>
               </thead>
@@ -71,12 +72,13 @@
                 @else
                 @foreach ($mentor as $mtr)
                     <tr>
-                      <td> {{ $mtr->id }} </td>
+                      <td> {{ $loop->iteration }} </td>
                       <td> {{ $mtr->nama}} </td>
+                      <td> {{ $mtr->pekerjaan}} </td>
                       <td>
                         @if (auth()->user()->role == 'superadmin')
                           <a href="{{ route('mentor.edit', $mtr->id) }}" class="btn btn-sm btn-warning"> 
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-user-edit"></i>
                           </a> 
                           <form action="{{ route('mentor.destroy', $mtr->id) }}" method="post" class="d-inline">
                             @method('delete')

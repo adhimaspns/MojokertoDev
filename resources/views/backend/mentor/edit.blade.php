@@ -49,7 +49,7 @@
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title"> 
-              <i class="fas fa-edit"></i>
+              <i class="fas fa-user-edit"></i>
               Edit Mentor
             </h3>
           </div>

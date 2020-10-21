@@ -58,7 +58,7 @@ use App\Http\Middleware\CheckRole;
         Route::post('mentor', 'Web\MentorController@store');
         Route::delete('mentor/{id}', 'Web\MentorController@destroy')->name('mentor.destroy');
         Route::patch('mentor/{id}', 'Web\MentorController@update')->name('mentor.update');
-        // Route::post('mentor/cari', 'Web\MentorController@cari');
+        Route::post('mentor/cari', 'Web\MentorController@cari');
     });
 
     // if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
@@ -72,6 +72,8 @@ use App\Http\Middleware\CheckRole;
         Route::get('showcase', 'Web\ShowcaseController@index');
         Route::get('mentor', 'Web\MentorController@index');
         Route::get('mentor/detail/{id}', 'Web\MentorController@show');
+        Route::get('mentor/cari', 'Web\MentorController@cari')->name('mentor.cari');
+        Route::post('mentor/cari', 'Web\MentorController@cari');
     });
 
 
