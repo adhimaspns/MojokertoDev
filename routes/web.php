@@ -44,18 +44,20 @@ use App\Http\Middleware\CheckRole;
         Route::get('admin', 'Web\AdminController@index');
         Route::get('admin/detail/{iduser}', 'Web\AdminController@detail');
         Route::get('admin/create', 'Web\AdminController@create');
+        Route::get('admin/{iduser}/edit', 'Web\AdminController@edit')->name('admin.edit');
         Route::post('admin', 'Web\AdminController@store');
         Route::delete('admin/{iduser}', 'Web\AdminController@destroy')->name('admin.destroy');
+        Route::patch('admin/{iduser}', 'Web\AdminController@update')->name('admin.update');
         
 
         Route::get('mentor', 'Web\MentorController@index');
         Route::get('mentor/detail/{id}', 'Web\MentorController@show');
         Route::get('mentor/create', 'Web\MentorController@create');
+        Route::get('mentor/cari', 'Web\MentorController@cari')->name('mentor.cari');
+        Route::get('mentor/{id}/edit', 'Web\MentorController@edit')->name('mentor.edit');
         Route::post('mentor', 'Web\MentorController@store');
         Route::delete('mentor/{id}', 'Web\MentorController@destroy')->name('mentor.destroy');
-        Route::get('mentor/{id}/edit', 'Web\MentorController@edit')->name('mentor.edit');
         Route::patch('mentor/{id}', 'Web\MentorController@update')->name('mentor.update');
-        Route::get('mentor/cari', 'Web\MentorController@cari')->name('mentor.cari');
         // Route::post('mentor/cari', 'Web\MentorController@cari');
     });
 

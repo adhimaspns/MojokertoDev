@@ -45,6 +45,12 @@
             <a href="{{ url('admin') }}"> Oke</a>
           </div>  
           @endif
+          @if (session('update'))
+          <div class="alert alert-success alert-data">
+            {{ session('update')}} |
+            <a href="{{ url('admin') }}"> Oke</a>
+          </div>  
+          @endif
           
           <div class="card">
             <div class="card-header">
@@ -88,22 +94,19 @@
                     <tr>
                       <td> {{ $admin->id }} </td>
                       <td> {{ $admin->name }}</td>
-                      {{-- <td> {{ $admin->back_name }}</td> --}}
-                      {{-- <td> {{ $admin->address }}</td> --}}
-                      {{-- <td> {{ $admin->city }}</td> --}}
-                      {{-- <td> {{ $admin->region }}</td> --}}
-                      {{-- <td> {{ $admin->phone }}</td> --}}
-                      {{-- <td> {{ $admin->age }}</td> --}}
                       <td> {{ $admin->username }}</td>
                       <td> {{ $admin->email }}</td>
                       <td>
+                        @if ($admin->role == "user")
+                          <span class="badge badge-primary">User</span>
+                        @endif
                         @if ($admin->role == "admin")
                           <span class="badge badge-success">Admin</span>
                         @endif
                       </td>
                       <td>
-                        <a href="" class="btn btn-sm btn-warning">
-                          <i class="fas fa-edit"></i>
+                        <a href="{{ route('admin.edit', $admin->id) }}" class="btn btn-sm btn-warning">
+                          <i class="fas fa-user-edit"></i>
                         </a>
                         <a href="{{ url('admin/detail',$admin->id) }}" class="btn btn-sm btn-info">
                           <i class="fas fa-eye"></i>

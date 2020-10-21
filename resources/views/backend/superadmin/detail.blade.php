@@ -78,7 +78,7 @@
                   <td> {{ $admin->email}}      </td>
                   <td>
                     {{-- Show Image form directory & DB --}}
-                    <img src="{{ URL::asset('image/' . $admin->foto) }}" class="card-img-top img-user" alt="Image-admin">
+                    <img src="{{ URL::asset('image/user/' . $admin->foto) }}" class="card-img-top img-user" alt="Image-admin">
                     {{-- <img src="{{ $admin->foto }}" class="card-img-top img-user" alt="Image-admin"> --}}
                   </td>
                   <td> {{ $admin->created_at->format('d/m/Y') }} </td>
