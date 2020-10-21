@@ -11,7 +11,8 @@
         height: 200px;
         background-size: cover;
         background-repeat: no-repeat;
-        margin: 20px 0 ;
+        margin: 20px 10px;
+        box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5)
       }
   </style>
 @endpush
