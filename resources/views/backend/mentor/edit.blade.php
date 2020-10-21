@@ -81,8 +81,10 @@
               </div>
               <div class="form-group">
                 <label> Foto </label>
-                <img src="{{ $mentor->foto }}" alt="image-mentor" class="img-thumbnail img-mentor">
+                <img src="{{ URL::asset('image/mentor/' . $mentor->foto) }}" alt="image-mentor" class="img-thumbnail img-mentor">
+                <small class="text-muted">{{ $mentor->foto }}</small>
                 <input type="file" class="form-control @error('file') is-invalid @enderror" name="file">
+                
                 {{-- <label class="text-muted">
                   {{ $mentor->foto}}
                 </label> --}}

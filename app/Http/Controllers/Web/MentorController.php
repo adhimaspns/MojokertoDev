@@ -32,7 +32,7 @@ class MentorController extends Controller
         ]);
 
         if (! $request->foto == 0) {
-            $imageName = time() . '.' . $request->foto->extension();
+            $imageName = $request->foto->getClientOriginalName();
 
             $request->foto->move(public_path('image/mentor'), $imageName);
 
