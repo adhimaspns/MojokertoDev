@@ -66,7 +66,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td> {{ $admin->id}}       </td>
+                  <td> {{ $loop->iteration}}       </td>
                   <td> {{ $admin->name}}       </td>
                   <td> {{ $admin->back_name}}  </td>
                   <td> {{ $admin->address}}    </td>

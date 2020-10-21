@@ -77,7 +77,7 @@
                 
                   @foreach ($mentor as $mtr)
                   <tr>
-                    <td> {{ $mtr->id }} </td>
+                    <td> {{ $loop->iteration }} </td>
                     <td> {{ $mtr->nama}} </td>
                     <td> {{ $mtr->pekerjaan}} </td>
                     <td>
