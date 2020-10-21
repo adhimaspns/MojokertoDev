@@ -2,7 +2,7 @@
 
 @section('title', 'MojoDev')
 
-@section('title-header-content', 'Detail Data Admin')
+@section('title-header-content', 'Detail Data Mentor')
 
 @push('customcss')
     <style>
@@ -65,7 +65,7 @@
                   <td> {{ $mentor->pekerjaan}}    </td>
                   <td>
                     {{-- Show Image form directory & DB --}}
-                    <img src="{{ URL::asset('image/mentor/' . $mentor->foto) }}" class="card-img-top img-user" alt="Image-admin">
+                    <img src="{{ url('image/mentor/' . $mentor->foto) }}" class="card-img-top img-user" alt="Image-mentor">
                   </td>
                 </tr>
               </tbody>

@@ -55,6 +55,8 @@ use App\Http\Middleware\CheckRole;
         Route::delete('mentor/{id}', 'Web\MentorController@destroy')->name('mentor.destroy');
         Route::get('mentor/{id}/edit', 'Web\MentorController@edit')->name('mentor.edit');
         Route::patch('mentor/{id}', 'Web\MentorController@update')->name('mentor.update');
+        Route::get('mentor/cari', 'Web\MentorController@cari')->name('mentor.cari');
+        // Route::post('mentor/cari', 'Web\MentorController@cari');
     });
 
     // if ($user == 'auth' && ($role == 'admin' || $role == 'superadmin')) {
